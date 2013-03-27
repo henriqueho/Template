@@ -20,8 +20,27 @@
         self.timer = nil;
         self.fadeTimer = nil;
         
-        showSeconds = K_SPLASH_TIME_IN_SECONDS;
-        fadeSeconds = 0.5;
+        fadeSeconds = 0.6;
+        showSeconds = K_SPLASH_TIME_IN_SECONDS+fadeSeconds;
+        
+        
+        self.imageView = [[UIImageView alloc] initWithFrame:self.frame];
+        [self addSubview:self.imageView];
+    }
+    return self;
+}
+
+- (id)initSecondSplash
+{
+    self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
+    if (self)
+    {
+        self.timer = nil;
+        self.fadeTimer = nil;
+        
+        fadeSeconds = 0.6;
+        showSeconds = (2*K_SPLASH_TIME_IN_SECONDS)+fadeSeconds;
+        
         
         self.imageView = [[UIImageView alloc] initWithFrame:self.frame];
         [self addSubview:self.imageView];
@@ -47,15 +66,15 @@
 {
     [self setNeedsDisplay];
     
-    showSeconds = seconds;
-    fadeSeconds = _fadeSeconds;
+//    showSeconds = seconds;
+//    fadeSeconds = _fadeSeconds;
  
     if (self.timer) {
         [self.timer invalidate];
         [self.fadeTimer invalidate];
     }
     
-    self.fadeTimer = [NSTimer scheduledTimerWithTimeInterval:showSeconds - fadeSeconds - 0.1
+    self.fadeTimer = [NSTimer scheduledTimerWithTimeInterval:seconds - _fadeSeconds - 0.1
                                               target:self 
                                             selector:@selector(fadeOut) 
                                             userInfo:nil 

@@ -45,7 +45,6 @@ dispatch_queue_t queueSplash;
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    //teste
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -73,10 +72,6 @@ dispatch_queue_t queueSplash;
     IGSplashView *splash = (IGSplashView*)[[self.viewController view] viewWithTag:555];
     if (splash) [splash show];
     
-    //    self.firstSplashRequest = YES;
-    //    IGDownloader *adSplashDownloader = [[IGDownloader alloc] initWithDelegate:self];
-    int milisencondTime = (int)[[NSDate date] timeIntervalSince1970];
-    
     NSString *urlString;
     
     // Faz a verificação da tela e do aparelho, para entregar o Splash de acordo.
@@ -90,11 +85,10 @@ dispatch_queue_t queueSplash;
         urlString = K_SPLASH_URL_DEFAULT;
     }
     
-    NSString *url = [NSString stringWithFormat:urlString, milisencondTime];
+    NSString *url = [NSString stringWithFormat:urlString, (int)[[NSDate date] timeIntervalSince1970]];
     
     queueSplash = dispatch_queue_create("AppDelegateQueue",nil);
     
-    //[adSplashDownloader downloadFromURLString:url];
     dispatch_async(queueSplash, ^{
         [self downloadSplashLinkAndImage:url];
     });
@@ -111,7 +105,7 @@ dispatch_queue_t queueSplash;
 
 - (void)downloadSplashLinkAndImage:(NSString *)_urlString {
     NSURL *url = [NSURL URLWithString:[_urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:3.0];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:K_SPLASH_TIME_OUT];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME];

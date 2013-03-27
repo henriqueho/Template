@@ -35,4 +35,8 @@
 #define K_BANNER_URL_DEFAULT @"http://ads.globo.com/RealMedia/ads/adstream_sx.ads/ogcapp/vairio/%@/%d@%@"
 #define K_BANNER_URL_RETINA  @"http://ads.globo.com/RealMedia/ads/adstream_sx.ads/ogcapp/vairio/%@/%d@%@?retina"
 
+#pragma ###################################################################################################################
+#pragma mark - APPLICATION SINGLETON
 
+#define INTERNET_STATUS [[ApplicationSingleton getAppSingleton] isInternetAvailable];
+#define DEVICE_TYPE [ApplicationSingleton getAppSingleton].deviceType

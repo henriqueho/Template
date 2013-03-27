@@ -46,7 +46,7 @@ dispatch_queue_t queueSplash;
     
     [[self window] setRootViewController:homeViewController];
     [[self window] makeKeyAndVisible];
-
+        
     return YES;
 }
 							
@@ -106,10 +106,10 @@ dispatch_queue_t queueSplash;
 
 - (NSString*) getUrlSplashWitnDeviceType:(NSString *)urlString {
     
-    if ([ApplicationSingleton getAppSingleton].deviceType == iPhone) {
-    } else if ([ApplicationSingleton getAppSingleton].deviceType == iPhoneRetnia) {
+    if (DEVICE_TYPE == iPhone) {
+    } else if (DEVICE_TYPE == iPhoneRetnia) {
         urlString = [urlString stringByAppendingString:K_SPLASH_CONFIG_RETINA];
-    } else if ([ApplicationSingleton getAppSingleton].deviceType == iPhone5) {
+    } else if (DEVICE_TYPE == iPhone5) {
         urlString = [urlString stringByAppendingString:K_SPLASH_CONFIG_IPHONE5];
     }
     

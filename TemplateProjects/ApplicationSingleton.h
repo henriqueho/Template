@@ -21,5 +21,6 @@ typedef enum
 @property(nonatomic) DeviceType deviceType;
 
 + (ApplicationSingleton*) getAppSingleton;
+- (BOOL)isInternetAvailable;
 
 @end

@@ -8,28 +8,27 @@
 
 #import "BannerController.h"
 #import "BannerModel+Parse.h"
-//#import "IGNetworkController.h"
 
 @implementation BannerController
 
 + (BOOL)didLoadBannerFooter:(UIWebView *)bannerFooter forEditorial:(NSString *)editorial {
     
-//    BOOL statusInternet = ([IGNetworkController isInternetAvailable])? YES : NO;
-//    if(!statusInternet)return NO;
-//    
-//    NSURL *url = [BannerModel formatToFooterUrlWithSitePage:editorial];
-//    
-//    url =[NSURL URLWithString:@"http://nosna.net/ipad/image.html"];
-//    
-//    if (!url)
-//        return NO;
-//    
-//    BannerModel *banner = [BannerModel parseWithURL:url];
-//    
-//    if ([banner isEmpty])
-//        return NO;
-//    
-//    [bannerFooter loadHTMLString:[banner html] baseURL:nil];
+    BOOL statusInternet = INTERNET_STATUS;
+    if(!statusInternet)return NO;
+    
+    NSURL *url = [BannerModel formatToFooterUrlWithSitePage:editorial];
+    
+    url =[NSURL URLWithString:@"http://nosna.net/ipad/image.html"];
+    
+    if (!url)
+        return NO;
+    
+    BannerModel *banner = [BannerModel parseWithURL:url];
+    
+    if ([banner isEmpty])
+        return NO;
+    
+    [bannerFooter loadHTMLString:[banner html] baseURL:nil];
     
     return YES;
 }

@@ -8,6 +8,7 @@
 
 #import "ApplicationSingleton.h"
 #import "IGUtil.h"
+#import "Reachability.h"
 
 @implementation ApplicationSingleton
 
@@ -35,6 +36,18 @@
     });
     
     return sharedInstance;
+}
+
+- (BOOL)isInternetAvailable {
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+    if (internetStatus != NotReachable) {
+        IGDEBUG(@"internet: %@", @"ON");
+        return YES;
+    } else {
+        IGDEBUG(@"internet: %@", @"OFF");
+        return NO;
+    }
 }
 
 @end

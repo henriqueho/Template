@@ -18,6 +18,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    if ([ApplicationSingleton getAppSingleton].deviceType == iPhone) {
+        IGDEBUG(@">>>>>>>>>- %@",@"iphone");
+    } else if ([ApplicationSingleton getAppSingleton].deviceType == iPhoneRetnia) {
+        IGDEBUG(@">>>>>>>>>- %@",@"iphoneretina");
+    } else if ([ApplicationSingleton getAppSingleton].deviceType == iPhone5) {
+        IGDEBUG(@">>>>>>>>>- %@",@"iphone5");
+    }
 }
 
 - (void)didReceiveMemoryWarning

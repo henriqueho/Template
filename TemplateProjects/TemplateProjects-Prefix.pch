@@ -14,4 +14,7 @@
 
     #include "IGLog.h"
     #import "Global.h"
+
+    #import "ApplicationSingleton.h"
+
 #endif

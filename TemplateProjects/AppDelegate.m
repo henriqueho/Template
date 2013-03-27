@@ -11,6 +11,7 @@
 #import "IGSplashView.h"
 #import "ViewController.h"
 
+
 @implementation AppDelegate
 
 dispatch_queue_t queueSplash;
@@ -35,14 +36,13 @@ dispatch_queue_t queueSplash;
         [splash2 setTag:999];
         [[[self viewController] view] insertSubview:splash2 atIndex:99];
     }
+    
     if ([[NSFileManager defaultManager] fileExistsAtPath:path1]) {
         IGSplashView *splash1 = [[IGSplashView alloc] init];
         [splash1 setImagePath:path1];
         [splash1 setTag:555];
         [[[self viewController] view] insertSubview:splash1 atIndex:100];
     }
-    
-
     
     [[self window] setRootViewController:homeViewController];
     [[self window] makeKeyAndVisible];
@@ -83,26 +83,15 @@ dispatch_queue_t queueSplash;
     IGSplashView *splash2 = (IGSplashView*)[[self.viewController view] viewWithTag:999];
     if (splash2) [splash2 show];
     
-    NSString *urlString;
-    
-    // Faz a verificação da tela e do aparelho, para entregar o Splash de acordo.
-    if ([IGUtil isDeviceRetinaDisplay]) {
-        if ([IGUtil isDeviceWidescreen]) {
-            urlString = K_SPLASH_URL_WIDESCREEN;
-        } else {
-            urlString = K_SPLASH_URL_RETINA;
-        }
-    } else {
-        urlString = K_SPLASH_URL_DEFAULT;
-    }
-    
-    NSString *url1 = [NSString stringWithFormat:urlString, (int)[[NSDate date] timeIntervalSince1970]];
-    NSString *url2 = [NSString stringWithFormat:K_SPLASH_URL_PATROCINIO, (int)[[NSDate date] timeIntervalSince1970]];
+    // Faz a verificação da tela e do aparelho, para entregar o Splash de acordo com o device.
+    NSString *urlStringApp = [self getUrlSplashWitnDeviceType:K_SPLASH_URL_APP];
+    NSString *urlStringPatrocinio = [self getUrlSplashWitnDeviceType:K_SPLASH_URL_PATROCINIO];
+
     queueSplash = dispatch_queue_create("AppDelegateQueue",nil);
     
     dispatch_async(queueSplash, ^{
-        [self downloadSplashLinkAndImage:url1 file:K_SPLASH_IMAGE_NAME1];
-        [self downloadSplashLinkAndImage:url2 file:K_SPLASH_IMAGE_NAME2];
+        [self downloadSplashLinkAndImage:urlStringApp file:K_SPLASH_IMAGE_NAME1];
+        [self downloadSplashLinkAndImage:urlStringPatrocinio file:K_SPLASH_IMAGE_NAME2];
     });
 
 }
@@ -115,7 +104,21 @@ dispatch_queue_t queueSplash;
 #pragma ###################################################################################################################
 #pragma mark - Custom Methods
 
+- (NSString*) getUrlSplashWitnDeviceType:(NSString *)urlString {
+    
+    if ([ApplicationSingleton getAppSingleton].deviceType == iPhone) {
+    } else if ([ApplicationSingleton getAppSingleton].deviceType == iPhoneRetnia) {
+        urlString = [urlString stringByAppendingString:K_SPLASH_CONFIG_RETINA];
+    } else if ([ApplicationSingleton getAppSingleton].deviceType == iPhone5) {
+        urlString = [urlString stringByAppendingString:K_SPLASH_CONFIG_IPHONE5];
+    }
+    
+    return [NSString stringWithFormat:urlString, (int)[[NSDate date] timeIntervalSince1970]];
+}
+
 - (void)downloadSplashLinkAndImage:(NSString *)_urlString file:(NSString *)fileName{
+    
+    IGDEBUG(@"Splash Url %@: %@", fileName, _urlString);
     NSURL *url = [NSURL URLWithString:[_urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:K_SPLASH_TIME_OUT];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -129,7 +132,7 @@ dispatch_queue_t queueSplash;
                 IGDEBUG(@"Splash patrocinado: %@", @"desligado");
                 [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
             } else { // ACHOU URL, BAIXA IMAGEM
-                IGDEBUG(@"Splash Url: %@", stringData);
+                IGDEBUG(@"Splash Imagem Url: %@", stringData);
                 NSURL *urlImage = [NSURL URLWithString:[stringData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                 NSURLRequest *urlRequestImage = [NSURLRequest requestWithURL:urlImage cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:K_SPLASH_TIME_OUT];
                 [NSURLConnection sendAsynchronousRequest:urlRequestImage queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {

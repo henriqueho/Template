@@ -10,6 +10,12 @@
 #define K_SPLASH_IMAGE_NAME1 @"/Splash1.jpg"
 #define K_SPLASH_IMAGE_NAME2 @"/Splash2.jpg"
 
+#define K_SPLASH_VIEW_TAG_APP 555
+#define K_SPLASH_VIEW_TAG_PATROCINIO 999
+
+#define K_SPLASH_VIEW_INDEX_APP 100
+#define K_SPLASH_VIEW_INDEX_PATROCINIO 99
+
 #define K_SPLASH_TIME_IN_SECONDS_APP 2
 #define K_SPLASH_TIME_IN_SECONDS_PATROCINIO 3
 
@@ -34,6 +40,7 @@
 
 #define K_BANNER_URL_DEFAULT @"http://ads.globo.com/RealMedia/ads/adstream_sx.ads/ogcapp/vairio/%@/%d@%@"
 #define K_BANNER_URL_RETINA  @"http://ads.globo.com/RealMedia/ads/adstream_sx.ads/ogcapp/vairio/%@/%d@%@?retina"
+
 
 #pragma ###################################################################################################################
 #pragma mark - APPLICATION SINGLETON

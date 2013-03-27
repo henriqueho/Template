@@ -27,24 +27,10 @@ dispatch_queue_t queueSplash;
     [self setViewController:homeViewController];
     
     // EXIBE SPLASH SE ARQUIVO EXISTIR
-    NSString *path1 = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME1];
-    NSString *path2 = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME2];
+    [self addSplashPublicidadeInView:[[self viewController] view]];
+    [self addSplashAppInView:[[self viewController] view]];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path2]) {
-        IGSplashView *splash2 = [[IGSplashView alloc] initSecondSplash];
-        [splash2 setImagePath:path2];
-        [splash2 setTag:999];
-        [[[self viewController] view] insertSubview:splash2 atIndex:99];
-    }
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path1]) {
-        IGSplashView *splash1 = [[IGSplashView alloc] init];
-        [splash1 setImagePath:path1];
-        [splash1 setTag:555];
-        [[[self viewController] view] insertSubview:splash1 atIndex:100];
-    }
-    
-    [[self window] setRootViewController:homeViewController];
+    [[self window] setRootViewController:self.viewController];
     [[self window] makeKeyAndVisible];
         
     return YES;
@@ -59,13 +45,7 @@ dispatch_queue_t queueSplash;
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     if(K_SPLASH_SHOWING_WHEN_BECOME_ACTIVE){
-        NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME1];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-            IGSplashView *splash = [[IGSplashView alloc] init];
-            [splash setImagePath:path];
-            [splash setTag:555];
-            [[[self viewController] view] insertSubview:splash atIndex:100];
-        }
+        [self addSplashAppInView:[[self viewController] view]];
     }
 }
 
@@ -78,22 +58,8 @@ dispatch_queue_t queueSplash;
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
-    IGSplashView *splash1 = (IGSplashView*)[[self.viewController view] viewWithTag:555];
-    if (splash1) [splash1 show];
-    IGSplashView *splash2 = (IGSplashView*)[[self.viewController view] viewWithTag:999];
-    if (splash2) [splash2 show];
-    
-    // Faz a verificação da tela e do aparelho, para entregar o Splash de acordo com o device.
-    NSString *urlStringApp = [self getUrlSplashWitnDeviceType:K_SPLASH_URL_APP];
-    NSString *urlStringPatrocinio = [self getUrlSplashWitnDeviceType:K_SPLASH_URL_PATROCINIO];
-
-    queueSplash = dispatch_queue_create("AppDelegateQueue",nil);
-    
-    dispatch_async(queueSplash, ^{
-        [self downloadSplashLinkAndImage:urlStringApp file:K_SPLASH_IMAGE_NAME1];
-        [self downloadSplashLinkAndImage:urlStringPatrocinio file:K_SPLASH_IMAGE_NAME2];
-    });
-
+    [self showSplashes];
+    [self downloadSplashes];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -103,6 +69,46 @@ dispatch_queue_t queueSplash;
 
 #pragma ###################################################################################################################
 #pragma mark - Custom Methods
+
+- (void) downloadSplashes {
+    // Faz a verificação da tela e do aparelho, para entregar o Splash de acordo com o device.
+    NSString *urlStringApp = [self getUrlSplashWitnDeviceType:K_SPLASH_URL_APP];
+    NSString *urlStringPatrocinio = [self getUrlSplashWitnDeviceType:K_SPLASH_URL_PATROCINIO];
+    
+    queueSplash = dispatch_queue_create("AppDelegateQueue",nil);
+    
+    dispatch_async(queueSplash, ^{
+        [self downloadSplashLinkAndImage:urlStringApp file:K_SPLASH_IMAGE_NAME1];
+        [self downloadSplashLinkAndImage:urlStringPatrocinio file:K_SPLASH_IMAGE_NAME2];
+    });
+}
+
+- (void) showSplashes {
+    IGSplashView *splash1 = (IGSplashView*)[[self.viewController view] viewWithTag:K_SPLASH_VIEW_TAG_APP];
+    if (splash1) [splash1 show];
+    IGSplashView *splash2 = (IGSplashView*)[[self.viewController view] viewWithTag:K_SPLASH_VIEW_TAG_PATROCINIO];
+    if (splash2) [splash2 show];
+}
+
+- (void) addSplashAppInView:(UIView *) view{
+    NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME1];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        IGSplashView *splash = [[IGSplashView alloc] init];
+        [splash setImagePath:path];
+        [splash setTag:K_SPLASH_VIEW_TAG_APP];
+        [view insertSubview:splash atIndex:K_SPLASH_VIEW_INDEX_APP];
+    }
+}
+
+- (void) addSplashPublicidadeInView:(UIView *) view{
+    NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME2];    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        IGSplashView *splash = [[IGSplashView alloc] initSecondSplash];
+        [splash setImagePath:path];
+        [splash setTag:K_SPLASH_VIEW_TAG_PATROCINIO];
+        [[[self viewController] view] insertSubview:splash atIndex:K_SPLASH_VIEW_INDEX_PATROCINIO];
+    }
+}
 
 - (NSString*) getUrlSplashWitnDeviceType:(NSString *)urlString {
     
@@ -116,7 +122,7 @@ dispatch_queue_t queueSplash;
     return [NSString stringWithFormat:urlString, (int)[[NSDate date] timeIntervalSince1970]];
 }
 
-- (void)downloadSplashLinkAndImage:(NSString *)_urlString file:(NSString *)fileName{
+- (void) downloadSplashLinkAndImage:(NSString *)_urlString file:(NSString *)fileName{
     
     IGDEBUG(@"Splash Url %@: %@", fileName, _urlString);
     NSURL *url = [NSURL URLWithString:[_urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];

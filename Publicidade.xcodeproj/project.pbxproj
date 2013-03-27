@@ -35,14 +35,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B5C097517022F3D00CAB6B6 /* TemplateProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemplateProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B5C097517022F3D00CAB6B6 /* Publicidade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publicidade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B5C097817022F3D00CAB6B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1B5C097A17022F3D00CAB6B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1B5C097C17022F3D00CAB6B6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1B5C098017022F3D00CAB6B6 /* TemplateProjects-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TemplateProjects-Info.plist"; sourceTree = "<group>"; };
+		1B5C098017022F3D00CAB6B6 /* Publicidade-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Publicidade-Info.plist"; sourceTree = "<group>"; };
 		1B5C098217022F3D00CAB6B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B5C098417022F3D00CAB6B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1B5C098617022F3D00CAB6B6 /* TemplateProjects-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TemplateProjects-Prefix.pch"; sourceTree = "<group>"; };
+		1B5C098617022F3D00CAB6B6 /* Publicidade-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Publicidade-Prefix.pch"; sourceTree = "<group>"; };
 		1B5C098A17022F3D00CAB6B6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1B5C098C17022F3D00CAB6B6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1B5C098E17022F3D00CAB6B6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		1B5C097617022F3D00CAB6B6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B5C097517022F3D00CAB6B6 /* TemplateProjects.app */,
+				1B5C097517022F3D00CAB6B6 /* Publicidade.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,10 +142,10 @@
 		1B5C097F17022F3D00CAB6B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1B5C098017022F3D00CAB6B6 /* TemplateProjects-Info.plist */,
+				1B5C098017022F3D00CAB6B6 /* Publicidade-Info.plist */,
 				1B5C098117022F3D00CAB6B6 /* InfoPlist.strings */,
 				1B5C098417022F3D00CAB6B6 /* main.m */,
-				1B5C098617022F3D00CAB6B6 /* TemplateProjects-Prefix.pch */,
+				1B5C098617022F3D00CAB6B6 /* Publicidade-Prefix.pch */,
 				1B5C098A17022F3D00CAB6B6 /* Default.png */,
 				1B5C098C17022F3D00CAB6B6 /* Default@2x.png */,
 				1B5C098E17022F3D00CAB6B6 /* Default-568h@2x.png */,
@@ -256,9 +256,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1B5C097417022F3D00CAB6B6 /* TemplateProjects */ = {
+		1B5C097417022F3D00CAB6B6 /* Publicidade */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B5C099817022F3D00CAB6B6 /* Build configuration list for PBXNativeTarget "TemplateProjects" */;
+			buildConfigurationList = 1B5C099817022F3D00CAB6B6 /* Build configuration list for PBXNativeTarget "Publicidade" */;
 			buildPhases = (
 				1B5C097117022F3D00CAB6B6 /* Sources */,
 				1B5C097217022F3D00CAB6B6 /* Frameworks */,
@@ -268,9 +268,9 @@
 			);
 			dependencies = (
 			);
-			name = TemplateProjects;
+			name = Publicidade;
 			productName = TemplateProjects;
-			productReference = 1B5C097517022F3D00CAB6B6 /* TemplateProjects.app */;
+			productReference = 1B5C097517022F3D00CAB6B6 /* Publicidade.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -282,7 +282,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Henrique Ho Wong";
 			};
-			buildConfigurationList = 1B5C097017022F3D00CAB6B6 /* Build configuration list for PBXProject "TemplateProjects" */;
+			buildConfigurationList = 1B5C097017022F3D00CAB6B6 /* Build configuration list for PBXProject "Publicidade" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -294,7 +294,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1B5C097417022F3D00CAB6B6 /* TemplateProjects */,
+				1B5C097417022F3D00CAB6B6 /* Publicidade */,
 			);
 		};
 /* End PBXProject section */
@@ -421,10 +421,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TemplateProjects/TemplateProjects-Prefix.pch";
-				INFOPLIST_FILE = "TemplateProjects/TemplateProjects-Info.plist";
+				GCC_PREFIX_HEADER = "TemplateProjects/Publicidade-Prefix.pch";
+				INFOPLIST_FILE = "TemplateProjects/Publicidade-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Publicidade;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -433,10 +433,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TemplateProjects/TemplateProjects-Prefix.pch";
-				INFOPLIST_FILE = "TemplateProjects/TemplateProjects-Info.plist";
+				GCC_PREFIX_HEADER = "TemplateProjects/Publicidade-Prefix.pch";
+				INFOPLIST_FILE = "TemplateProjects/Publicidade-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Publicidade;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -444,7 +444,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1B5C097017022F3D00CAB6B6 /* Build configuration list for PBXProject "TemplateProjects" */ = {
+		1B5C097017022F3D00CAB6B6 /* Build configuration list for PBXProject "Publicidade" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B5C099617022F3D00CAB6B6 /* Debug */,
@@ -453,7 +453,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B5C099817022F3D00CAB6B6 /* Build configuration list for PBXNativeTarget "TemplateProjects" */ = {
+		1B5C099817022F3D00CAB6B6 /* Build configuration list for PBXNativeTarget "Publicidade" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B5C099917022F3D00CAB6B6 /* Debug */,

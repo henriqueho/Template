@@ -59,9 +59,9 @@
 
 - (BOOL)isEmpty {
     static NSString *emptyString = @"empty.gif";
-    if(self.srcImage==nil) return NO;
+    if(self.html==nil) return NO;
     
-    NSRange range = [self.srcImage rangeOfString:emptyString];
+    NSRange range = [self.html rangeOfString:emptyString];
    
     return (range.location != NSNotFound);
 }

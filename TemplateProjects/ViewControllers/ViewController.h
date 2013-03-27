@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *bannerWebView;
 
 @end

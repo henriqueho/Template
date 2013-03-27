@@ -24,8 +24,9 @@ dispatch_queue_t queueSplash;
     ViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootView"];
 
     [self setViewController:homeViewController];
-    // SPLASH
-    NSString *path = [[IGUtil documentPath] stringByAppendingString:@"/Portrait.jpg"];
+    
+    // EXIBE SPLASH SE ARQUIVO EXISTIR
+    NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         IGSplashView *splash = [[IGSplashView alloc] init];
@@ -49,16 +50,15 @@ dispatch_queue_t queueSplash;
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-//    if(K_SPLASH_SHOWING_WHEN_BECOME_ACTIVE){
-//        NSString *path = [[IGUtil documentPath] stringByAppendingString:@"/Portrait.jpg"];
-//        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-//            IGSplashView *splash = [[IGSplashView alloc] init];
-//            [splash setImagePath:path];
-//            [splash setTag:555];
-//            [[[self viewController] view] insertSubview:splash atIndex:100];
-//        }
-//    }
-
+    if(K_SPLASH_SHOWING_WHEN_BECOME_ACTIVE){
+        NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            IGSplashView *splash = [[IGSplashView alloc] init];
+            [splash setImagePath:path];
+            [splash setTag:555];
+            [[[self viewController] view] insertSubview:splash atIndex:100];
+        }
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -92,7 +92,7 @@ dispatch_queue_t queueSplash;
     
     NSString *url = [NSString stringWithFormat:urlString, milisencondTime];
     
-    queueSplash = dispatch_queue_create("AppDelegate",nil);
+    queueSplash = dispatch_queue_create("AppDelegateQueue",nil);
     
     //[adSplashDownloader downloadFromURLString:url];
     dispatch_async(queueSplash, ^{
@@ -114,7 +114,7 @@ dispatch_queue_t queueSplash;
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:3.0];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
-    NSString *path = [[IGUtil documentPath] stringByAppendingString:@"/Portrait.jpg"];
+    NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME];
     
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if ([data length] > 0 && error == nil) {

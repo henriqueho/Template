@@ -8,10 +8,21 @@
         <scene sceneID="1Sn-iR-qym">
             <objects>
                 <viewController storyboardIdentifier="RootView" id="Et2-vx-kQe" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="X8e-lP-hwA">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <view key="view" contentMode="scaleToFill" id="TRc-T1-fgh">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6z-kJ-047">
+                                <color key="backgroundColor" red="0.25430366056561371" green="0.52267551605216478" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91733186141304346" green="0.91733186141304346" blue="0.91733186141304346" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="E6z-kJ-047" firstAttribute="trailing" secondItem="TRc-T1-fgh" secondAttribute="trailing" type="default" id="I69-Ap-QIa"/>
+                            <constraint firstAttribute="bottom" secondItem="E6z-kJ-047" secondAttribute="bottom" constant="410" id="UYL-WJ-Pru"/>
+                            <constraint firstItem="E6z-kJ-047" firstAttribute="leading" secondItem="TRc-T1-fgh" secondAttribute="leading" type="default" id="m8b-o0-4S9"/>
+                            <constraint firstItem="E6z-kJ-047" firstAttribute="top" secondItem="TRc-T1-fgh" secondAttribute="top" type="default" id="uX9-BN-y8R"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yXr-ej-zZc"/>
                 </viewController>
@@ -21,6 +32,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
         </class>
@@ -28,6 +42,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

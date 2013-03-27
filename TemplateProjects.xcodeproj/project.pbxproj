@@ -132,9 +132,9 @@
 			children = (
 				78BA19281702634200EA2092 /* AppDelegate.h */,
 				78BA19291702635700EA2092 /* AppDelegate.m */,
-				78BA19311702650400EA2092 /* MainStoryboard.storyboard */,
 				7894D81317033EF40098D7B6 /* ApplicationSingleton.h */,
 				7894D81417033EF40098D7B6 /* ApplicationSingleton.m */,
+				78BA19311702650400EA2092 /* MainStoryboard.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";

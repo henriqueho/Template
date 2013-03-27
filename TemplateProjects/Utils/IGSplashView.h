@@ -67,5 +67,6 @@
 - (void)showForSeconds:(NSTimeInterval)seconds fadeForSeconds:(NSTimeInterval)_fadeSeconds;
 - (void)show;
 - (void)fadeOut;
+- (id)initSecondSplash;
 
 @end

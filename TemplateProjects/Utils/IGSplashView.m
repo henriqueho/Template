@@ -20,7 +20,7 @@
         self.timer = nil;
         self.fadeTimer = nil;
         
-        fadeSeconds = 0.6;
+        fadeSeconds = 1.0;
         showSeconds = K_SPLASH_TIME_IN_SECONDS+fadeSeconds;
         
         

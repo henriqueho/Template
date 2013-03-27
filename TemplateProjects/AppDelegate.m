@@ -26,14 +26,23 @@ dispatch_queue_t queueSplash;
     [self setViewController:homeViewController];
     
     // EXIBE SPLASH SE ARQUIVO EXISTIR
-    NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME];
+    NSString *path1 = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME1];
+    NSString *path2 = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME2];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        IGSplashView *splash = [[IGSplashView alloc] init];
-        [splash setImagePath:path];
-        [splash setTag:555];
-        [[[self viewController] view] insertSubview:splash atIndex:100];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path2]) {
+        IGSplashView *splash2 = [[IGSplashView alloc] initSecondSplash];
+        [splash2 setImagePath:path2];
+        [splash2 setTag:999];
+        [[[self viewController] view] insertSubview:splash2 atIndex:99];
     }
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path1]) {
+        IGSplashView *splash1 = [[IGSplashView alloc] init];
+        [splash1 setImagePath:path1];
+        [splash1 setTag:555];
+        [[[self viewController] view] insertSubview:splash1 atIndex:100];
+    }
+    
+
     
     [[self window] setRootViewController:homeViewController];
     [[self window] makeKeyAndVisible];
@@ -50,7 +59,7 @@ dispatch_queue_t queueSplash;
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     if(K_SPLASH_SHOWING_WHEN_BECOME_ACTIVE){
-        NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME];
+        NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME1];
         if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
             IGSplashView *splash = [[IGSplashView alloc] init];
             [splash setImagePath:path];
@@ -69,8 +78,10 @@ dispatch_queue_t queueSplash;
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
-    IGSplashView *splash = (IGSplashView*)[[self.viewController view] viewWithTag:555];
-    if (splash) [splash show];
+    IGSplashView *splash1 = (IGSplashView*)[[self.viewController view] viewWithTag:555];
+    if (splash1) [splash1 show];
+    IGSplashView *splash2 = (IGSplashView*)[[self.viewController view] viewWithTag:999];
+    if (splash2) [splash2 show];
     
     NSString *urlString;
     
@@ -85,12 +96,13 @@ dispatch_queue_t queueSplash;
         urlString = K_SPLASH_URL_DEFAULT;
     }
     
-    NSString *url = [NSString stringWithFormat:urlString, (int)[[NSDate date] timeIntervalSince1970]];
-    
+    NSString *url1 = [NSString stringWithFormat:urlString, (int)[[NSDate date] timeIntervalSince1970]];
+    NSString *url2 = [NSString stringWithFormat:K_SPLASH_URL_PATROCINIO, (int)[[NSDate date] timeIntervalSince1970]];
     queueSplash = dispatch_queue_create("AppDelegateQueue",nil);
     
     dispatch_async(queueSplash, ^{
-        [self downloadSplashLinkAndImage:url];
+        [self downloadSplashLinkAndImage:url1 file:K_SPLASH_IMAGE_NAME1];
+        [self downloadSplashLinkAndImage:url2 file:K_SPLASH_IMAGE_NAME2];
     });
 
 }
@@ -103,12 +115,12 @@ dispatch_queue_t queueSplash;
 #pragma ###################################################################################################################
 #pragma mark - Custom Methods
 
-- (void)downloadSplashLinkAndImage:(NSString *)_urlString {
+- (void)downloadSplashLinkAndImage:(NSString *)_urlString file:(NSString *)fileName{
     NSURL *url = [NSURL URLWithString:[_urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:K_SPLASH_TIME_OUT];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
-    NSString *path = [[IGUtil documentPath] stringByAppendingString:K_SPLASH_IMAGE_NAME];
+    NSString *path = [[IGUtil documentPath] stringByAppendingString:fileName];
     
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if ([data length] > 0 && error == nil) {

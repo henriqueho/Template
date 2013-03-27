@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "BannerController.h"
+#import "WebViewController.h"
 
 @interface ViewController ()
     @property (nonatomic) BOOL expandBanner;
@@ -97,24 +98,22 @@ dispatch_queue_t queueBanner;
         }];
         self.expandBanner = YES;
     }
-//    else{
-//        
-//        
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-//        TermsSeviceViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"webViewTerms"];
-//        tutorialViewController.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
-//        tutorialViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-//        [self presentViewController:tutorialViewController animated:YES completion:^{
-//            [UIView animateWithDuration:1.5 animations:^{
-//                self.webViewBanner.alpha = 0;
-//            }];
-//            self.webViewBanner.alpha = 1;
-//            
-//            self.webViewBanner.frame = CGRectMake(0,self.bannerRect.origin.y,self.bannerRect.size.width,self.bannerRect.size.height);
-//        }];
-//        
-//        self.expandBanner = NO;
-//    }
+    else{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        WebViewController *webViewBannerLink = [storyboard instantiateViewControllerWithIdentifier:@"FreeWebView"];
+        webViewBannerLink.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
+        webViewBannerLink.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self presentViewController:webViewBannerLink animated:YES completion:^{
+            [UIView animateWithDuration:1.5 animations:^{
+                _bannerWebView.alpha = 0;
+            }];
+                _bannerWebView.alpha = 1;
+            
+                _bannerWebView.frame = CGRectMake(0,self.bannerRect.origin.y,self.bannerRect.size.width,self.bannerRect.size.height);
+        }];
+        
+        self.expandBanner = NO;
+    }
     
 }
 

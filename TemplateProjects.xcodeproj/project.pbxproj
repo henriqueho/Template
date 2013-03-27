@@ -29,6 +29,7 @@
 		7894D834170370CC0098D7B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7894D833170370CC0098D7B6 /* ViewController.m */; };
 		7894D838170375210098D7B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7894D837170375210098D7B6 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
 		7894D83B170376030098D7B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7894D8391703759B0098D7B6 /* SystemConfiguration.framework */; };
+		7894D841170393B90098D7B6 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7894D840170393B90098D7B6 /* WebViewController.m */; };
 		78BA192A1702635700EA2092 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BA19291702635700EA2092 /* AppDelegate.m */; };
 		78BA19331702650400EA2092 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78BA19311702650400EA2092 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,8 @@
 		7894D836170375210098D7B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		7894D837170375210098D7B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		7894D8391703759B0098D7B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7894D83F170393B90098D7B6 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		7894D840170393B90098D7B6 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		78BA19281702634200EA2092 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = TemplateProjects/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		78BA19291702635700EA2092 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = TemplateProjects/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		78BA19321702650400EA2092 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = TemplateProjects/en.lproj/MainStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
@@ -235,6 +238,8 @@
 			children = (
 				7894D832170370CC0098D7B6 /* ViewController.h */,
 				7894D833170370CC0098D7B6 /* ViewController.m */,
+				7894D83F170393B90098D7B6 /* WebViewController.h */,
+				7894D840170393B90098D7B6 /* WebViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				7894D830170370420098D7B6 /* ApplicationSingleton.m in Sources */,
 				7894D834170370CC0098D7B6 /* ViewController.m in Sources */,
 				7894D838170375210098D7B6 /* Reachability.m in Sources */,
+				7894D841170393B90098D7B6 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

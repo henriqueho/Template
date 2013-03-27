@@ -21,7 +21,7 @@
         self.fadeTimer = nil;
         
         fadeSeconds = 1.0;
-        showSeconds = K_SPLASH_TIME_IN_SECONDS+fadeSeconds;
+        showSeconds = K_SPLASH_TIME_IN_SECONDS + fadeSeconds;
         
         
         self.imageView = [[UIImageView alloc] initWithFrame:self.frame];

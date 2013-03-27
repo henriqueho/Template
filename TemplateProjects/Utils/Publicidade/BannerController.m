@@ -7,7 +7,7 @@
 //
 
 #import "BannerController.h"
-//#import "BannerModel+Parse.h"
+#import "BannerModel+Parse.h"
 //#import "IGNetworkController.h"
 
 @implementation BannerController

@@ -27,6 +27,8 @@
 		7894D82D17036F2A0098D7B6 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 7894D82C17036F2A0098D7B6 /* NSString+MD5.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
 		7894D830170370420098D7B6 /* ApplicationSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7894D82F170370420098D7B6 /* ApplicationSingleton.m */; };
 		7894D834170370CC0098D7B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7894D833170370CC0098D7B6 /* ViewController.m */; };
+		7894D838170375210098D7B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7894D837170375210098D7B6 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		7894D83B170376030098D7B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7894D8391703759B0098D7B6 /* SystemConfiguration.framework */; };
 		78BA192A1702635700EA2092 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BA19291702635700EA2092 /* AppDelegate.m */; };
 		78BA19331702650400EA2092 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78BA19311702650400EA2092 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,9 @@
 		7894D82F170370420098D7B6 /* ApplicationSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationSingleton.m; path = TemplateProjects/ApplicationSingleton.m; sourceTree = SOURCE_ROOT; };
 		7894D832170370CC0098D7B6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7894D833170370CC0098D7B6 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7894D836170375210098D7B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		7894D837170375210098D7B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		7894D8391703759B0098D7B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		78BA19281702634200EA2092 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = TemplateProjects/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		78BA19291702635700EA2092 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = TemplateProjects/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		78BA19321702650400EA2092 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = TemplateProjects/en.lproj/MainStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
@@ -79,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7894D83B170376030098D7B6 /* SystemConfiguration.framework in Frameworks */,
 				1B5C097917022F3D00CAB6B6 /* UIKit.framework in Frameworks */,
 				1B5C097B17022F3D00CAB6B6 /* Foundation.framework in Frameworks */,
 				1B5C097D17022F3D00CAB6B6 /* CoreGraphics.framework in Frameworks */,
@@ -108,6 +114,7 @@
 		1B5C097717022F3D00CAB6B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7894D8391703759B0098D7B6 /* SystemConfiguration.framework */,
 				1B5C097817022F3D00CAB6B6 /* UIKit.framework */,
 				1B5C097A17022F3D00CAB6B6 /* Foundation.framework */,
 				1B5C097C17022F3D00CAB6B6 /* CoreGraphics.framework */,
@@ -183,6 +190,7 @@
 				1B5C09AD1702378C00CAB6B6 /* JSONKit.h */,
 				1B5C09AE1702378C00CAB6B6 /* JSONKit.m */,
 				7894D82617036DFD0098D7B6 /* EgoCache */,
+				7894D835170374FA0098D7B6 /* Reachability */,
 				7894D82A17036EDC0098D7B6 /* NSString-MD5 */,
 			);
 			path = Libs;
@@ -229,6 +237,15 @@
 				7894D833170370CC0098D7B6 /* ViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7894D835170374FA0098D7B6 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				7894D836170375210098D7B6 /* Reachability.h */,
+				7894D837170375210098D7B6 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +328,7 @@
 				7894D82D17036F2A0098D7B6 /* NSString+MD5.m in Sources */,
 				7894D830170370420098D7B6 /* ApplicationSingleton.m in Sources */,
 				7894D834170370CC0098D7B6 /* ViewController.m in Sources */,
+				7894D838170375210098D7B6 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

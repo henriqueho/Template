@@ -59,10 +59,12 @@
     NSTimeInterval fadeSeconds;
     
 }
+
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSTimer *fadeTimer;
 @property (nonatomic, strong) NSString *imagePath;
 @property (nonatomic, ) UIImageView *imageView;
+@property (nonatomic) BOOL isAnimation;
 
 - (void)showForSeconds:(NSTimeInterval)seconds fadeForSeconds:(NSTimeInterval)_fadeSeconds;
 - (void)show;

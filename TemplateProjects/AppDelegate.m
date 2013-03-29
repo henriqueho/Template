@@ -95,6 +95,7 @@ dispatch_queue_t queueSplash;
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         IGSplashView *splash = [[IGSplashView alloc] init];
         [splash setImagePath:path];
+        [splash setIsAnimation:K_SPLASH_APP_ANIMATION];
         [splash setTag:K_SPLASH_VIEW_TAG_APP];
         [view insertSubview:splash atIndex:K_SPLASH_VIEW_INDEX_APP];
     }
